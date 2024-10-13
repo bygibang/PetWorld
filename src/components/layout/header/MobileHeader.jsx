@@ -52,7 +52,7 @@ const MobileHeader = () => {
 					<div className='absolute right-8 top-14 z-20 flex flex-col items-start gap-5 bg-white p-4 rounded-xl border border-primary-100'>
 						<MotionFrame key={isOpen} lineY={0}>
 							<div className='flex flex-col gap-2'>
-								<NavLink to={"/Catalog"} className="text-text_grey-100 text-lg font-medium hover:scale-105 hover:text-primary-100 transition-transform duration-200 ">Оголошення</NavLink>
+								<NavLink to={"/catalog"} className="text-text_grey-100 text-lg font-medium hover:scale-105 hover:text-primary-100 transition-transform duration-200 ">Оголошення</NavLink>
 								<button onClick={() =>
 									isLogin ?
 										router("/creatingAnAnnouncement")
