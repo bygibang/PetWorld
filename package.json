@@ -1,8 +1,7 @@
 {
   "name": "petworld",
   "homepage": "https://bygibang.github.io/PetWorld",
-  "private": false,
-  "license": "UNLICENSED",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
