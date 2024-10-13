@@ -60,20 +60,21 @@ const CatalogPage = () => {
 	}, [sorting, announcements, filteredAnnouncements]);
 
 
-
 	useEffect(() => {
-		if (!hasFiltersApplied) { // Check if hasFiltersApplied is false
+		if (!hasFiltersApplied) {
 			const fetchAnnouncements = async () => {
 				setIsLoading(true);
 				try {
-					// Fetch all announcements
-					const q = query(collection(db, 'announcements'), where('isActive', '==', true));
-					const querySnapshot = await getDocs(q);
-					const fetchedAnnouncements = querySnapshot.docs.map((doc) => ({
+					const announcementsRef = collection(db, "announcements");
+					let queryRef = query(
+						announcementsRef,
+						where("isActive", "==", true), // Filter for active announcements
+					);
+					const snapshot = await getDocs(queryRef);
+					const fetchedAnnouncements = snapshot.docs.map((doc) => ({
 						id: doc.id,
 						...doc.data(),
 					}));
-					// Update state
 					setAnnouncements(fetchedAnnouncements); // Correctly update announcements
 					setTotalPages(Math.ceil(fetchedAnnouncements.length / 3));
 				} catch (error) {
@@ -81,10 +82,34 @@ const CatalogPage = () => {
 				} finally {
 					setIsLoading(false);
 				}
-			};
+			}
 			fetchAnnouncements();
 		}
-	}, [hasFiltersApplied]);
+	}, [hasFiltersApplied])
+	// useEffect(() => {
+	// 	if (!hasFiltersApplied) { // Check if hasFiltersApplied is false
+	// 		const fetchAnnouncements = async () => {
+	// 			setIsLoading(true);
+	// 			try {
+	// 				// Fetch all announcements
+	// 				const q = query(collection(db, 'announcements'), where('isActive', '==', true));
+	// 				const querySnapshot = await getDocs(q);
+	// 				const fetchedAnnouncements = querySnapshot.docs.map((doc) => ({
+	// 					id: doc.id,
+	// 					...doc.data(),
+	// 				}));
+	// 				// Update state
+	// 				setAnnouncements(fetchedAnnouncements); // Correctly update announcements
+	// 				setTotalPages(Math.ceil(fetchedAnnouncements.length / 3));
+	// 			} catch (error) {
+	// 				console.error('Error fetching announcements:', error);
+	// 			} finally {
+	// 				setIsLoading(false);
+	// 			}
+	// 		};
+	// 		fetchAnnouncements();
+	// 	}
+	// }, [hasFiltersApplied]);
 
 	const handleApplyFilters = (e) => {
 		e.preventDefault()
