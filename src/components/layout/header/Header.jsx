@@ -41,7 +41,7 @@ const Header = () => {
 			<div className="w-full flex justify-between max-2xl:px-5 max-w-screen-2xl m-auto">
 				<div className="flex items-center gap-10">
 					<Logo colorLogo="py-2.5 px-2 bg-primary-100 rounded-md" logo={logo} textLogo={textLogo} />
-					<NavLink to={"/Catalog"} className="text-text_grey-100 text-lg font-medium hover:scale-105 hover:text-primary-100 transition-transform duration-200 ">Оголошення</NavLink>
+					<NavLink to={"/catalog"} className="text-text_grey-100 text-lg font-medium hover:scale-105 hover:text-primary-100 transition-transform duration-200 ">Оголошення</NavLink>
 				</div>
 				<div className="flex items-center gap-20">
 					<ButtonMain
