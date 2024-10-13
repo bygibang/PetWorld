@@ -59,6 +59,8 @@ const CatalogPage = () => {
 		setFilteredAnnouncements(sortedFilteredAnnouncements);
 	}, [sorting, announcements, filteredAnnouncements]);
 
+
+
 	useEffect(() => {
 		if (!hasFiltersApplied) { // Check if hasFiltersApplied is false
 			const fetchAnnouncements = async () => {
@@ -178,10 +180,4 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage
-
-
-
-
-
-
 
